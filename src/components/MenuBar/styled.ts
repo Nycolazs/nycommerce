@@ -238,12 +238,11 @@ export const MobileButton = styled.div`
 
 export const MobileMenu = styled.div<{ $visible?: boolean; }>`
   position: fixed;
-  top: 0;
-  bottom: 0;
-  left: -99999rem;
-  right: 99999rem;
   transform: translateX(100%);
-  opacity: 0;
+  opacity: 1;
+  width: 90%;
+  height: 100%;
+  left: 100%;
   transition: transform 0.2s ease-in,opacity 0.2s ease-in;
 
   ${props => props.$visible && `
