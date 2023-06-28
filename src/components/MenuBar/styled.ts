@@ -5,11 +5,13 @@ export const MenuBarContainer = styled.div`
   flex-direction: row;
   justify-content: space-between;
   
-  width: 100%;
+    
   height: 100px;
   padding: 0 20px;
 
   background-color: rgba(0,0,0,0.07);
+
+  font-family: 'Lato',sans-serif;
 
   & > * {
     margin-top: 3px;
@@ -19,6 +21,10 @@ export const MenuBarContainer = styled.div`
     position: relative;
     background-color: white;
     height: 50px;
+  }
+
+  @media (min-width: 750px) and (max-width: 976px) {
+    width: 65em;
   }
 `;
 
@@ -98,6 +104,10 @@ export const AboutContainer = styled.div`
 
   margin-right: 20px;
   cursor: pointer;
+
+  a{
+    font-weight: 300;
+  }
 
   @media (max-width: 768px) {
     display: none;
@@ -186,6 +196,10 @@ export const Bag = styled.div<{ $itens?: string; }>`
       top: 6px !important;
       right: 66px !important;
     }
+
+    @media (min-width: 750px) and (max-width: 976px) {
+      display: none;
+    }
   }
 `;
 
@@ -233,54 +247,5 @@ export const MobileButton = styled.div`
 
   @media (max-width: 768px) {
     display: flex !important;
-  }
-`;
-
-export const MobileMenu = styled.div<{ $visible?: boolean; }>`
-  position: fixed;
-  transform: translateX(100%);
-  opacity: 1;
-  width: 90%;
-  height: 100%;
-  left: 100%;
-  transition: transform 0.2s ease-in,opacity 0.2s ease-in;
-
-  ${props => props.$visible && `
-    left: 100%;
-    opacity: 1;
-    z-index: 9999;
-    width: 90%;
-    height: 100%;
-    transform: translateX(-100%);
-    transition: transform 0.4s ease-in,opacity 0.4s ease-in;
-  `}
-
-  background-color: white;
-
-  @media (min-width: 768px) {
-    display: none;
-
-    & > * {
-      display: none;
-    }
-  }
-`;
-
-export const CloseButton = styled.div`
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-
-  height: 40px;
-  width: 40px;
-
-  top: 2px;
-  right: 13px;
-  position: absolute;
-
-  i{
-    font-size: 2em;
-    color: black;
   }
 `;

@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { MenuBarContainer, Logo, MainItens, Link, Itens, Cart, Price, Bag, User, MobileButton, 
-  AboutContainer, MobileMenu, CloseButton } from './styled'
+  AboutContainer } from './styled';
+import MenuMobile from './MobileMenu';
 
 export default function MenuBar(props: any) {
   props = {
@@ -8,7 +9,7 @@ export default function MenuBar(props: any) {
     itens: "0"
   }
   
-  const [menuVisible, setMenuVisible] = useState(false);
+  const [menuMobVisible, setMenuMobVisible] = useState(false);
 
   return (
     <>
@@ -17,10 +18,10 @@ export default function MenuBar(props: any) {
           <Logo onClick={() => window.location.href = '/'}>
             <img alt="Logo" />
           </Logo>
-          <Link onClick={() => window.location.href = '/everything'}>Everything</Link>
-          <Link onClick={() => window.location.href = '/women'}>Women</Link>
-          <Link onClick={() => window.location.href = '/men'}>Men</Link>
-          <Link onClick={() => window.location.href = '/accessories'}>Accessories</Link>
+          <Link href="/everything">Everything</Link>
+          <Link href="/women">Women</Link>
+          <Link href="/men">Men</Link>
+          <Link href="/accessories">Accessories</Link>
         </MainItens>
         <Itens>
           <AboutContainer>
@@ -33,11 +34,12 @@ export default function MenuBar(props: any) {
           </Cart>
           <User><i className="bi bi-person-fill"/></User>
         </Itens>
-        <MobileButton onClick={()=>menuVisible?setMenuVisible(false):setMenuVisible(true)}><i className="bi bi-list"></i></MobileButton>
-        <MobileMenu $visible={menuVisible}>
-          <CloseButton onClick={()=>menuVisible?setMenuVisible(false):setMenuVisible(true)}><i className="bi bi-x"/></CloseButton>
-        </MobileMenu>
+        <MobileButton onClick={()=>menuMobVisible?setMenuMobVisible(false):setMenuMobVisible(true)}>
+          <i className="bi bi-list"></i>
+        </MobileButton>
       </MenuBarContainer>
+      {/* Menu Mobile */}
+      <MenuMobile menuVisible={[menuMobVisible, setMenuMobVisible]} />
     </>
   )
 }
